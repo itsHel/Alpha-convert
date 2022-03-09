@@ -3,13 +3,11 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-// Base listeners wrong??
 window.addEventListener("load", function(){
     const secondInput = $("#color-background");
     const resultInput = $("#color-result");
     const rgbRadio = $("#rgb-radio");
     const hexRadio = $("#hex-radio");
-    const inputWrapper = $("#inputs-wrapper");
     const plusButton = $("#plus-button");
     const minusButton = $("#minus-button");
     const whiteFillIco = $("#white-fill");
@@ -85,12 +83,16 @@ window.addEventListener("load", function(){
         let colorInputs = $$(".color-foreground");
 
         for(let i = 0; i < colorInputs.length; i++){
-            let newColor = parseColor(colorInputs[i].value);
+            let inputVal = colorInputs[i].value;
 
-            if(!newColor)
-                return;
-
-            firstColors.push(newColor);
+            if(i == 0 || inputVal){
+                let newColor = parseColor(inputVal);
+    
+                if(!newColor)
+                    return;
+    
+                firstColors.push(newColor);
+            }
         }
 
         let secondaryColor = parseColor(secondInput.value, true);
@@ -113,14 +115,18 @@ window.addEventListener("load", function(){
             let colorInputs = $$(".color-foreground");
 
             for(let i = 0; i < colorInputs.length; i++){
-                let newColor = parseColor(colorInputs[i].value);
+                let inputVal = colorInputs[i].value;
 
-                if(!newColor){
-                    notify("Wrong color format", "warn");
-                    return;
+                if(i == 0 || inputVal){
+                    let newColor = parseColor(inputVal);
+    
+                    if(!newColor){
+                        notify("Wrong color format", "warn");
+                        return;
+                    }
+    
+                    firstColors.push(newColor);
                 }
-
-                firstColors.push(newColor);
             }
 
             let secondaryColor = parseColor(secondInput.value, true);
