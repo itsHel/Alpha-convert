@@ -37,9 +37,13 @@ body{
     margin:var(--result-margin) auto;
     max-width: 760px;
     color: #666666;
-    margin-bottom: 5rem;
+}
+#header h1{
+    color: #333333;
+    margin-top: 0;
 }
 #header p{
+    font-size: 18px;
     margin:0.75rem;
 }
 #header p:last-of-type{
