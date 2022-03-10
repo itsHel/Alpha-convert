@@ -34,7 +34,8 @@ body{
 }
 #header{
     text-align: center;
-    margin:var(--result-margin) auto;
+    margin:1rem auto;
+    margin-bottom:var(--result-margin);
     max-width: 760px;
     color: #666666;
 }
@@ -44,7 +45,7 @@ body{
 }
 #header p{
     font-size: 18px;
-    margin:0.75rem;
+    margin:0.5rem 0;
 }
 #header p:last-of-type{
     margin-bottom:0;
