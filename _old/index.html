@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alpha color merger</title>
+        <link rel="icon" href="splash.svg">
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Merge alpha color(s) with background or alpha colors together">
+        <meta name="og:description" content="Merge alpha color(s) with background or alpha colors together">
+        <meta name="title" content="Alpha color merger">   
+        <meta name="og:title" content="Alpha color merger">
+        <meta name="google-site-verification" content="034t3S4O7oLWmuxt4D19e5igyzjETLa3-ZdodipwZMg" />
+
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+        
+    <body>
+        <div id=header>
+            <h1>Alpha merger</h1>
+            <p>Merge overlapping alpha color(s) with background or overlapping alpha colors together</p>
+            <p><span class=text-highlight>Order matters</span> if you are combining more than two colors</p>
+            <p>Allowed formats: rgb(a) / hex</p>
+        </div>
+
+        <div id=main>
+            <div id=inputs-wrapper>
+                <div id=input-buttons>
+                    <div id=plus-button class="buttons" title="Add color">+</div>
+                    <div id=minus-button class="buttons" title="Remove color">-</div>
+                </div>
+                <div id=background-input-wrapper>
+                    <label class="input-placeholder input-placeholder-color">
+                        <input id=color-background placeholder="non-Alpha color" spellcheck="false">
+                        <span>Background color</span>
+                    </label>
+                    <svg id=white-fill viewBox="0 0 24 24"><title>Fill with white</title><g><path d="M16.56,8.94L7.62,0L6.21,1.41l2.38,2.38L3.44,8.94c-0.59,0.59-0.59,1.54,0,2.12l5.5,5.5C9.23,16.85,9.62,17,10,17 s0.77-0.15,1.06-0.44l5.5-5.5C17.15,10.48,17.15,9.53,16.56,8.94z M5.21,10L10,5.21L14.79,10H5.21z M19,11.5c0,0-2,2.17-2,3.5 c0,1.1,0.9,2,2,2s2-0.9,2-2C21,13.67,19,11.5,19,11.5z M2,20h20v4H2V20z"/></g></svg>
+                </div>
+            </div>
+            
+            <div id=result-wrapper>
+                <div id=result-input-wrapper>
+                    <label class="input-placeholder input-placeholder-color">
+                        <input id=color-result placeholder="Result" spellcheck="false">
+                        <span>Result color</span>
+                    </label>
+                    <svg id=copy class=disabled viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><title>Copy</title><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                </div>
+                <div id=result-radio-wrapper>
+                    <div id=radios>
+                        <label><input id=rgb-radio class=radio type=radio name=myradio><span>Rgb</span></label>
+                        <label><input id=hex-radio class=radio type=radio name=myradio><span>Hex</span></label>
+                        <div class=radio-line></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
