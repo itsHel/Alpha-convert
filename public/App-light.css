@@ -1,0 +1,63 @@
+html {
+    background: rgba(0, 0, 0, 0.08);
+}
+body {
+    color: #444444;
+    background: #fff;
+    border-left: 1px solid #d3d8db;
+    border-right: 1px solid #d3d8db;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+}
+#header {
+    color: #666666;
+}
+#header h1 {
+    color: #333333;
+}
+#main {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#result-wrapper {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.buttons {
+    padding: 0 0.5rem;
+    font-size: 28px;
+    cursor: pointer;
+}
+.buttons:first-of-type {
+    color: var(--main-color);
+}
+
+/* Inputs */
+.input-placeholder {
+    border: 2px solid black;
+}
+.input-placeholder span {
+    color: var(--main-color);
+    background: white;
+}
+
+.input-placeholder-color:focus-within {
+    border: 2px solid var(--main-color);
+}
+.input-placeholder-color:focus-within span {
+    color: var(--main-color);
+}
+.input-placeholder input::placeholder {
+    color: rgb(167, 167, 167);
+}
+
+.popup {
+    background: white;
+    box-shadow: 2px 7px 14px -5px rgba(0, 0, 0, 0.2);
+}
+
+.popup-text {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#theme-wrapper svg {
+    fill: #000000;
+}
