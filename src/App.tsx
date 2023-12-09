@@ -4,6 +4,7 @@ import ResultRadio from "./Component/ResultRadio";
 import ControlButton from "./Component/ControlButton";
 import Header from "./Component/Header";
 import ThemeButton from "./Component/ThemeButton";
+import ResultPreview from "./Component/ResultPreview";
 import { Popup } from "./Component/Popup";
 import { PopupContext } from "./PopupContext";
 import { ColorType, parseColor, mixColors } from "./Color";
@@ -18,8 +19,7 @@ type ResultType = "rgb" | "hex";
 
 export default function App() {
     const [inputs, setInputs] = React.useState<ColorInput[]>([""]);
-    const [backgroundInput, setBackgroundInput] =
-        React.useState<ColorInput>("");
+    const [backgroundInput, setBackgroundInput] = React.useState<ColorInput>("");
     const [resultType, setResultType] = React.useState<ResultType>("rgb");
     const [result, setResult] = React.useState<Result>({ rgb: "", hex: "" });
     const { open } = React.useContext(PopupContext);
@@ -55,10 +55,7 @@ export default function App() {
         confirm();
     }
 
-    function handleColorChange(
-        e: React.MouseEvent<HTMLInputElement>,
-        index: number,
-    ) {
+    function handleColorChange(e: React.MouseEvent<HTMLInputElement>, index: number) {
         let newInputs = inputs;
         newInputs[index] = e.currentTarget.value;
 
@@ -87,18 +84,11 @@ export default function App() {
             }
         }
 
-        let secondaryColor: ColorType | false = parseColor(
-            backgroundInput,
-            true,
-        );
+        let secondaryColor: ColorType | false = parseColor(backgroundInput, true);
 
         if (firstColors.length && secondaryColor) {
             let separator = inputs[0].match(",") ? ", " : " ";
-            let result: Result | false = mixColors(
-                firstColors,
-                secondaryColor,
-                separator,
-            );
+            let result: Result | false = mixColors(firstColors, secondaryColor, separator);
 
             if (!result) {
                 open({ type: "error", text: "Wrong alphas" });
@@ -125,9 +115,7 @@ export default function App() {
                         return (
                             <Input
                                 placeholder="Alpha color"
-                                handleChange={(
-                                    e: React.MouseEvent<HTMLInputElement>,
-                                ) => handleColorChange(e, i)}
+                                handleChange={(e: React.MouseEvent<HTMLInputElement>) => handleColorChange(e, i)}
                                 key={i}
                                 confirm={confirm}
                                 name={"Color " + i}
@@ -136,9 +124,7 @@ export default function App() {
                     })}
                     <div id="input-buttons">
                         <ControlButton onClick={addInput} name="+" />
-                        {inputs.length > 1 && (
-                            <ControlButton onClick={removeInput} name="-" />
-                        )}
+                        {inputs.length > 1 && <ControlButton onClick={removeInput} name="-" />}
                     </div>
                     <div id="background-input-wrapper">
                         <Input
@@ -148,23 +134,13 @@ export default function App() {
                             confirm={confirm}
                             name="Background color"
                         />
-                        <img
-                            onClick={backgroundFill}
-                            id="white-fill"
-                            title="Fill with white"
-                            src="fill.svg"
-                        />
+                        <img onClick={backgroundFill} id="white-fill" title="Fill with white" src="fill.svg" />
                     </div>
                 </div>
 
                 <div id="result-wrapper">
                     <div id="result-input-wrapper">
-                        <Input
-                            value={result[resultType]}
-                            placeholder="Result"
-                            confirm={confirm}
-                            name="Result color"
-                        />
+                        <Input value={result[resultType]} placeholder="Result" confirm={confirm} name="Result color" />
                         <img
                             onClick={copyResult}
                             className={result[resultType] ? "" : "disabled"}
@@ -174,13 +150,12 @@ export default function App() {
                         />
                     </div>
                     <ResultRadio
-                        onRadioChange={(type: ResultType) =>
-                            changeResultType(type)
-                        }
+                        onRadioChange={(type: ResultType) => changeResultType(type)}
                         radioTypes={["Rgb", "Hex"]}
                         startIndex={0}
                         shiftTime={250}
                     />
+                    <ResultPreview color={result.rgb} />
                 </div>
             </div>
 
